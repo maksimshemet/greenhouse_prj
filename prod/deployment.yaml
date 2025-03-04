@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  name: greenhouse
+  labels:
+    app: greenhouse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greenhouse
+  template:
+    metadata:
+      labels:
+        app: greenhouse
+    spec:
+      containers:
+        - name: greenhouse
+          image: shemetmaksim/devops-blog:jenkins-build_1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
