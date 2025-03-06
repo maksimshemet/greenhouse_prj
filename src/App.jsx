@@ -22,7 +22,6 @@ function App() {
       <FeatureSection />
       <ProductFeatures />
       <ProductCard />
-      <DripIrrigationSection />
       <CounterfeitComparison />
       <TestimonialsSection />
       <KeyFeatures />
