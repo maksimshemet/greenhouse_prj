@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
+import { useNavigate } from 'react-router-dom';
+import AddToCartButton from './AddToCartButton';
 import m3 from '../assets/3.jpg';
 import m4 from '../assets/4.jpg';
 import m5 from '../assets/5.jpg';
@@ -8,9 +11,16 @@ import m10 from '../assets/10.jpg';
 import m12 from '../assets/12.jpg';
 import m15 from '../assets/15.jpg';
 import prnkMain from '../assets/parnik_info.jpg';
+import dripIrMain from '../assets/drip-irrigation-1.jpg';
+import dripIr1 from '../assets/drip-irrigation-2.jpg';
+import dripIr2 from '../assets/drip-irrigation-3.jpg';
+import dripIr3 from '../assets/drip-irrigation-4.jpg';
 
 const ProductCard = ({ image, size, densities, basePrice, itemsCount, width, height }) => {
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
   const [quantities, setQuantities] = useState(densities.map(() => 1));
+  const [addedToCart, setAddedToCart] = useState(densities.map(() => false));
   
   const handleIncrement = (index) => {
     const newQuantities = [...quantities];
@@ -25,10 +35,34 @@ const ProductCard = ({ image, size, densities, basePrice, itemsCount, width, hei
     }
     setQuantities(newQuantities);
   };
+
+  const handleAddToCart = (index, density) => {
+    const product = {
+      id: `parnik-${size}m-${density}g`,
+      name: `Парник (${size} м) - ${density}г/м²`,
+      price: basePrice + (index * 50),
+      image: image,
+      size: size,
+      density: density,
+      width: width,
+      height: height
+    };
+
+    addToCart(product, quantities[index]);
+    
+    const newAddedToCart = [...addedToCart];
+    newAddedToCart[index] = true;
+    setAddedToCart(newAddedToCart);
+    
+    setTimeout(() => {
+      setAddedToCart(newAddedToCart.map(() => false));
+      navigate('/cart');
+    }, 500);
+  };
   
   return (
     <div className="flex flex-col md:flex-row gap-4 mb-8">
-      {/* Product info card */}
+      {/* Інформаційна картка продукту */}
       <div className="bg-gray-100 p-4 rounded shadow-sm flex flex-col w-full md:w-64">
         <div className="mb-4">
           <img 
@@ -66,7 +100,7 @@ const ProductCard = ({ image, size, densities, basePrice, itemsCount, width, hei
         </div>
       </div>
       
-      {/* Product variants */}
+      {/* Варіанти продукту */}
       <div className="flex flex-wrap gap-4 flex-grow">
         {densities.map((density, index) => (
           <div key={index} className="bg-white rounded shadow-sm p-4 flex-1 min-w-60">
@@ -84,10 +118,10 @@ const ProductCard = ({ image, size, densities, basePrice, itemsCount, width, hei
               Щільність {density}г/м²
             </p>
             
-            {/* Quantity selector */}
+            {/* Вибір кількості */}
             <div className="flex items-center justify-center my-4">
               <button 
-                className="border border-gray-300 px-2 py-1"
+                className="border border-gray-300 w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-l"
                 onClick={() => handleDecrement(index)}
               >
                 −
@@ -99,23 +133,30 @@ const ProductCard = ({ image, size, densities, basePrice, itemsCount, width, hei
                 readOnly
               />
               <button 
-                className="border border-gray-300 px-2 py-1"
+                className="border border-gray-300 w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-r"
                 onClick={() => handleIncrement(index)}
               >
                 +
               </button>
             </div>
             
-            {/* Price */}
+            {/* Ціна */}
             <div className="text-center mb-4">
               <span className="text-2xl font-bold text-red-600">
                 {basePrice + (index * 50)} грн
               </span>
             </div>
             
-            {/* Buy button */}
-            <button className="w-full bg-green-600 text-white py-2 font-medium hover:bg-green-700 transition">
-              КУПИТИ
+            {/* Кнопка купити */}
+            <button 
+              className={`w-full py-2 font-medium transition duration-300 ${
+                addedToCart[index] 
+                  ? 'bg-green-700 text-white' 
+                  : 'bg-green-600 hover:bg-green-700 text-white'
+              }`}
+              onClick={() => handleAddToCart(index, density)}
+            >
+              {addedToCart[index] ? 'ДОДАНО В КОШИК' : 'КУПИТИ'}
             </button>
           </div>
         ))}
@@ -199,13 +240,141 @@ const ProductCatalog = () => {
       height: 0.8
     }
   ];
-  
+
+  const dripIrrigationProducts = [
+    {
+      id: 'drip-50m',
+      name: 'Комплектація 50 м',
+      image: dripIr1,
+      price: 399,
+      items: [
+        { name: 'крапельна стрічка', quantity: '50м' },
+        { name: 'труба', quantity: '20м' },
+        { name: "з'єднання для шланга", quantity: '1шт' },
+        { name: 'кран', quantity: '1шт' },
+        { name: 'трійник перехідний труба-стрічка', quantity: '5шт' },
+        { name: 'заглушка для стрічки', quantity: '5шт' },
+        { name: "з'єднання ремонтне для стрічки", quantity: '1шт' },
+        { name: 'заглушка для труби', quantity: '1шт' }
+      ]
+    },
+    {
+      id: 'drip-100m',
+      name: 'Комплектація 100 м',
+      image: dripIr2,
+      price: 625,
+      items: [
+        { name: 'крапельна стрічка', quantity: '100м' },
+        { name: 'труба', quantity: '20м' },
+        { name: "з'єднання для шланга", quantity: '1шт' },
+        { name: 'кран', quantity: '1шт' },
+        { name: 'трійник перехідний труба-стрічка', quantity: '10шт' },
+        { name: 'заглушка для стрічки', quantity: '10шт' },
+        { name: "з'єднання ремонтне для стрічки", quantity: '2шт' },
+        { name: 'заглушка для труби', quantity: '2шт' }
+      ]
+    },
+    {
+      id: 'drip-200m',
+      name: 'Комплектація 200 м',
+      image: dripIr3,
+      price: 1095,
+      items: [
+        { name: 'крапельна стрічка', quantity: '200м' },
+        { name: 'труба', quantity: '20м' },
+        { name: "з'єднання для шланга", quantity: '1шт' },
+        { name: 'кран', quantity: '1шт' },
+        { name: 'трійник перехідний труба-стрічка', quantity: '20шт' },
+        { name: 'заглушка для стрічки', quantity: '20шт' },
+        { name: "з'єднання ремонтне для стрічки", quantity: '4шт' },
+        { name: 'заглушка для труби', quantity: '4шт' }
+      ]
+    }
+  ];
+
+  const benefits = [
+    'Автоматизація системи поливу',
+    'Кореневий метод зрошення',
+    'Забезпечення аерації ґрунту',
+    'Рівномірність поливу рослини',
+    'Економія води на 40-50%',
+    'Збереження вологості ґрунту',
+    'Економія часу та сил',
+    'Зниження ризику хвороб рослин',
+    'Можливість подачі добрив',
+    'Проста установка обладнання',
+    'Не стимулює зростання бур\'янів',
+    'Раннє дозрівання плодових',
+    'Підвищення врожайності'
+  ];
 
   return (
     <div className="container mx-auto px-4 py-8">
+      {/* Парники */}
       {parniky.map((product, index) => (
         <ProductCard key={index} {...product} />
       ))}
+
+      {/* Секція крапельного поливу */}
+      <div className="mt-16">
+        <h2 className="text-3xl font-bold text-teal-800 text-center mb-8">
+          Обладнання для крапельного поливу
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          {/* Картка переваг */}
+          <div className="bg-white rounded shadow p-4">
+            <div className="mb-4">
+              <img 
+                src={dripIrMain} 
+                alt="Крапельний полив" 
+                className="w-full h-40 object-cover rounded"
+              />
+            </div>
+            <h3 className="text-xl font-bold text-teal-800 mb-4">
+              Переваги парника з краплинним поливом
+            </h3>
+            <ul className="space-y-1">
+              {benefits.map((benefit, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="inline-block w-4 h-4 bg-green-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                  <span className="text-sm">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Продукти крапельного поливу */}
+          {dripIrrigationProducts.map((product, index) => (
+            <div key={index} className="bg-white rounded shadow p-4">
+              <div className="flex justify-center mb-4">
+                <img 
+                  src={product.image} 
+                  alt={product.name} 
+                  className="h-40 object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-teal-800 mb-4 text-center">
+                {product.name}
+              </h3>
+              <ul className="space-y-1 text-sm mb-6">
+                {product.items.map((item, idx) => (
+                  <li key={idx} className="flex justify-between">
+                    <span>{item.name}</span>
+                    <span>{item.quantity}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto">
+                <p className="text-2xl font-bold text-red-600 text-center mb-4">
+                  {product.price} грн
+                </p>
+                <AddToCartButton product={product} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

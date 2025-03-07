@@ -1,21 +1,25 @@
 import React from 'react';
-import { Phone } from 'lucide-react';
+import { Phone, ShoppingCart } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const Header = () => {
+  const { totalItems } = useCart();
+
   return (
     <header className="w-full bg-white shadow-sm">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         {/* Logo and tagline */}
         <div className="flex items-center">
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <div>
               <h1 className="text-xl font-semibold text-amber-800">Агропарник</h1>
               <p className="text-xs text-gray-600">Найкращі парники в Україні</p>
             </div>
-          </div>
+          </Link>
         </div>
         
-        {/* Phone numbers and language selector */}
+        {/* Phone numbers, language selector, and cart */}
         <div className="flex items-center space-x-6">
           {/* Phone numbers */}
           <div className="hidden md:flex flex-col">
@@ -42,6 +46,16 @@ const Header = () => {
             <span className="text-gray-400">|</span>
             <button className="text-sm font-medium text-gray-500 hover:underline">RUS</button>
           </div>
+          
+          {/* Cart */}
+          <Link to="/cart" className="relative flex items-center">
+            <ShoppingCart size={24} className="text-green-600 hover:text-green-700 transition-colors" />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </Link>
           
           {/* CTA Buttons */}
           <div className="flex flex-col space-y-1">
