@@ -3,17 +3,20 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
+  const navigate = useNavigate();
   const { cart, totalPrice, removeFromCart, updateQuantity, clearCart } = useCart();
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
 
-  const handleCreateOrder = (e) => {
+  const handleCreateOrder = async (e) => {
     e.preventDefault();
     const phone = document.getElementById('phone').value;
     const delivery = document.getElementById('delivery').value;
     const comment = document.getElementById('comment').value;
+    const name = document.getElementById('name').value;
 
     if (!phone || !delivery) {
       setError('Будь ласка, заповніть номер телефону та адресу доставки');
@@ -23,36 +26,43 @@ function Cart() {
     const order = {
       items: cart,
       totalPrice: totalPrice,
+      name: name,
       phone: phone,
       delivery: delivery,
       comment: comment
     };
 
-    // Here you would typically send the order to your backend
-    console.log('Створено замовлення:', order);
-    setShowModal(true);
-    clearCart();
+    try {
+      setError('');
+      const response = await fetch('http://localhost:3000/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(order),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Щось пішло не так під час створення замовлення');
+      }
+
+      const data = await response.json();
+      console.log('Замовлення успішно створено:', data);
+      
+      navigate("/success")
+      clearCart();
+    } catch (err) {
+      console.error('Помилка при створенні замовлення:', err);
+      setError(err.message || 'Помилка при створенні замовлення. Спробуйте пізніше.');
+    }
   };
 
   return (
     <>
       <Header />
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Success Modal */}
-        {showModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-8 rounded-lg max-w-md w-full">
-              <h3 className="text-2xl font-bold text-green-600 mb-4">Замовлення прийнято!</h3>
-              <p className="text-gray-600 mb-6">Дякуємо за замовлення! Ми зв'яжемося з вами найближчим часом.</p>
-              <button
-                onClick={() => setShowModal(false)}
-                className="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300"
-              >
-                Закрити
-              </button>
-            </div>
-          </div>
-        )}
+        
 
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-semibold text-gray-800">Ваш кошик</h1>
@@ -131,18 +141,11 @@ function Cart() {
                 <span>Всього:</span>
                 <span>{totalPrice.toFixed(2)} грн</span>
               </div>
-              <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Link to="/" className="bg-white border border-green-600 text-green-600 hover:bg-green-50 font-medium py-3 px-6 rounded text-center transition duration-300">
-                  Продовжити покупки
-                </Link>
-                <button 
-                  onClick={handleCreateOrder}
-                  className="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded transition duration-300"
-                >
-                  Оформити замовлення
-                </button>
-              </div>
               <form className="mt-6">
+              <div className="mb-4">
+                  <label className="block text-gray-700 mb-2" htmlFor="phone">ПІБ</label>
+                  <input type="text" id="name" className="w-full px-3 py-2 border rounded" placeholder="Ваш ПІБ" />
+                </div>
                 <div className="mb-4">
                   <label className="block text-gray-700 mb-2" htmlFor="phone">Номер телефону:</label>
                   <input type="text" id="phone" className="w-full px-3 py-2 border rounded" placeholder="Ваш номер телефону" />
@@ -156,12 +159,17 @@ function Cart() {
                   <input type="text" id="comment" className="w-full px-3 py-2 border rounded" placeholder="Введіть коментар до замовлення" />
                 </div>
               </form>
-              <button 
-                onClick={clearCart}
-                className="w-full bg-red-500 hover:bg-red-600 text-white font-medium py-3 px-6 rounded mt-4 transition duration-300"
-              >
-                Очистити кошик
-              </button>
+              <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Link to="/" className="bg-white border border-green-600 text-green-600 hover:bg-green-50 font-medium py-3 px-6 rounded text-center transition duration-300">
+                  Продовжити покупки
+                </Link>
+                <button 
+                  onClick={handleCreateOrder}
+                  className="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded transition duration-300"
+                >
+                  Оформити замовлення
+                </button>
+              </div>
             </div>
           </>
         )}

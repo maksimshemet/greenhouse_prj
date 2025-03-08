@@ -1,5 +1,8 @@
 import grnHs600x400 from '../assets/grnhs600x400.jpg';
-
+import klipsy from '../assets/klipsy.png';
+import dugy from '../assets/dugy.png';
+import kolyshki from '../assets/kilochky.png';
+import agrovolokno2 from '../assets/agrovolokno2.png';
 
 const ProductFeatures = () => {
   return (
@@ -29,7 +32,7 @@ const ProductFeatures = () => {
           <div className="flex flex-col items-center text-center">
             <div className="w-24 h-24 mb-4">
               <img 
-                src="/api/placeholder/96/96" 
+                src={klipsy} 
                 alt="Кліпси" 
                 className="w-full h-full object-contain"
               />
@@ -44,7 +47,7 @@ const ProductFeatures = () => {
           <div className="flex flex-col items-center text-center">
             <div className="w-24 h-24 mb-4">
               <img 
-                src="/api/placeholder/96/96" 
+                src={dugy}
                 alt="Дуги з ПНД" 
                 className="w-full h-full object-contain"
               />
@@ -59,7 +62,7 @@ const ProductFeatures = () => {
           <div className="flex flex-col items-center text-center">
             <div className="w-24 h-24 mb-4">
               <img 
-                src="/api/placeholder/96/96" 
+                src={kolyshki} 
                 alt="Кілочки" 
                 className="w-full h-full object-contain"
               />
@@ -74,7 +77,7 @@ const ProductFeatures = () => {
           <div className="flex flex-col items-center text-center">
             <div className="w-24 h-24 mb-4">
               <img 
-                src="/api/placeholder/96/96" 
+                src={agrovolokno2}
                 alt="Агроволокно" 
                 className="w-full h-full object-contain"
               />

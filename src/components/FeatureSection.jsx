@@ -1,5 +1,8 @@
 import React from 'react';
-import { Award, Factory, CircleCheck, CircleDashed } from 'lucide-react';
+import agrovolokno from '../assets/agrovolokno.png';
+import kolyshki from '../assets/kolyshki.png';
+import proizvodstvo from '../assets/proizvodstvo.png';
+import ecofriendly from '../assets/ecofriendly.png';
 
 const FeatureSection = () => {
   return (
@@ -14,7 +17,7 @@ const FeatureSection = () => {
           <div className="flex space-x-4">
             <div className="flex-shrink-0">
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
-                <img src="/api/placeholder/80/80" alt="Eco certificate" className="w-16 h-16" />
+                <img src={ecofriendly} alt="Eco certificate" className="w-16 h-16" />
               </div>
             </div>
             <div className="flex-grow">
@@ -40,7 +43,7 @@ const FeatureSection = () => {
           <div className="flex space-x-4">
             <div className="flex-shrink-0">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center">
-                <img src="/api/placeholder/80/80" alt="Factory" className="w-16 h-16" />
+                <img src={proizvodstvo} alt="Factory" className="w-16 h-16" />
               </div>
             </div>
             <div className="flex-grow">
@@ -63,7 +66,7 @@ const FeatureSection = () => {
           <div className="flex space-x-4">
             <div className="flex-shrink-0">
               <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center">
-                <img src="/api/placeholder/80/80" alt="Fabric" className="w-16 h-16" />
+                <img src={agrovolokno} alt="Fabric" className="w-16 h-16" />
               </div>
             </div>
             <div className="flex-grow">
@@ -86,7 +89,7 @@ const FeatureSection = () => {
           <div className="flex space-x-4">
             <div className="flex-shrink-0">
               <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center">
-                <img src="/api/placeholder/80/80" alt="Pipe" className="w-16 h-16" />
+                <img src={kolyshki} alt="Pipe" className="w-16 h-16" />
               </div>
             </div>
             <div className="flex-grow">

@@ -4,6 +4,8 @@ import klipsy from '../assets/klipsy.png';
 import kolyshki from '../assets/kolyshki.png';
 import parnik_podsnezhnik from '../assets/parnik_podsnezhnik.jpg';
 import parnik_s_plenkoy from '../assets/parnik_s_plenkoy.jpg';
+import agrovolokno from '../assets/agrovolokno.png';
+import kilochky from '../assets/kilochky.png';
 
 const CounterfeitComparison = () => {
   return (
@@ -26,11 +28,11 @@ const CounterfeitComparison = () => {
             
             <div className="w-full md:w-1/3 flex justify-center">
               <div className="relative">
-                <img src={klipsy} alt="Original agro fabric" className="rounded-full bg-gray-50" />
+                <img src={agrovolokno} alt="Original agro fabric" className="rounded-full bg-gray-50" />
                 <CheckCircle size={40} className="absolute -top-2 -right-2 text-green-500" />
               </div>
               <div className="relative ml-12">
-                <img src={klipsy} alt="Counterfeit agro fabric" className="rounded-full bg-gray-50" />
+                <img src={agrovolokno} alt="Counterfeit agro fabric" className="rounded-full bg-gray-50" />
                 <XCircle size={40} className="absolute -top-2 -right-2 text-red-500" />
               </div>
             </div>
@@ -82,11 +84,11 @@ const CounterfeitComparison = () => {
             
             <div className="w-full md:w-1/3 flex justify-center">
               <div className="relative">
-                <img src={klipsy} alt="Original stakes" className="rounded-full bg-gray-50" />
+                <img src={kilochky} alt="Original stakes" className="rounded-full bg-gray-50" />
                 <CheckCircle size={40} className="absolute -top-2 -right-2 text-green-500" />
               </div>
               <div className="relative ml-12">
-                <img src={klipsy} alt="Counterfeit stakes" className="rounded-full bg-gray-50" />
+                <img src={kilochky} alt="Counterfeit stakes" className="rounded-full bg-gray-50" />
                 <XCircle size={40} className="absolute -top-2 -right-2 text-red-500" />
               </div>
             </div>
@@ -111,7 +113,7 @@ const CounterfeitComparison = () => {
             </div>
             <div className="w-full md:w-1/4 flex justify-center">
               <div className="relative">
-                <img src={kolyshki} alt="Water pipe" className="bg-gray-200 rounded" />
+                <img src={kilochky} alt="Water pipe" className="bg-gray-200 rounded" />
                 <XCircle size={40} className="absolute -top-2 -right-2 text-red-500" />
               </div>
             </div>

@@ -1,46 +1,53 @@
 import React from 'react';
-import keyFImg from '../assets/ecofriendly.png'
+import char1 from '../assets/characteristic1.jpg';
+import char2 from '../assets/characteristic2.jpg';
+import char3 from '../assets/characteristic3.jpg';
+import char4 from '../assets/characteristic4.jpg';
+import char5 from '../assets/characteristic5.jpg';
+import char6 from '../assets/characteristic6.jpg';
+import char7 from '../assets/characteristic7.jpg';
+import char8 from '../assets/characteristic8.jpg';
 
 const KeyFeatures = () => {
   const features = [
     {
       id: 1,
-      image: keyFImg,
+      image: char1,
       title: 'Не має тисячної витривалості.'
     },
     {
       id: 2,
-      image: keyFImg,
+      image: char2,
       title: 'Не затримує повітря та воду.'
     },
     {
       id: 3,
-      image: keyFImg,
+      image: char3,
       title: 'Пропускає близько 95% світла'
     },
     {
       id: 4,
-      image: keyFImg,
+      image: char4,
       title: 'Тримає тепло краще повітря (до ~7°С)'
     },
     {
       id: 5,
-      image: keyFImg,
+      image: char5,
       title: 'Захищає від опадів (дощ, град, сніг)'
     },
     {
       id: 6,
-      image: keyFImg,
+      image: char6,
       title: 'Захищає рослини від перегріву'
     },
     {
       id: 7,
-      image: keyFImg,
+      image: char7,
       title: 'Захищає від паразитів, комах та птахів'
     },
     {
       id: 8,
-      image: keyFImg,
+      image: char8,
       title: 'Не гниє, стійкий до грибів та цвілі'
     }
   ];

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -19,12 +20,14 @@ const Footer = () => {
         {/* Contact Info Section */}
         <div className="flex flex-col md:flex-row justify-between items-center border-t border-gray-300 pt-6">
           {/* Logo */}
-          <div className="mb-6 md:mb-0">
-            <img 
-              src="/api/placeholder/100/60" 
-              alt="Агропарник logo" 
-              className="h-14"
-            />
+          {/* Logo and tagline */}
+          <div className="flex items-center">
+            <Link to="/" className="flex items-center">
+              <div>
+                <h1 className="text-xl font-semibold text-amber-800">Агропарник</h1>
+                <p className="text-xs text-gray-600">Найкращі парники в Україні</p>
+              </div>
+            </Link>
           </div>
           
           {/* Phone Numbers */}
