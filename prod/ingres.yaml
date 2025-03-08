@@ -27,7 +27,7 @@ kind: Ingress
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
-  name: greenhouse-ingress
+  name: greenhouse-api-ingress
 spec:
   ingressClassName: nginx
   tls:
