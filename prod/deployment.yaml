@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - name: greenhouse-api
-          image: shemetmaksim/greenhouse_prj_api:jenkins-build_1.0.0
+          image: shemetmaksim/greenhouse_api_prj:jenkins-build_1.0.0
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
