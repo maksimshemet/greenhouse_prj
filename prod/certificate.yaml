@@ -20,7 +20,7 @@ kind: Certificate
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "0"
-  name: greenhouse-cert
+  name: greenhouse-api-cert
   namespace: greenhouse
 spec:
   secretName: greenhouse-cert # Secret where the certificate will be stored
