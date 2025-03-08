@@ -41,7 +41,7 @@ pipeline {
     
     stages {
         // Build stage: Install dependencies and build application
-        stage('Build') {
+        stage('Build-ui') {
             steps {
                 // Build Node.js application
                 container('node') {
@@ -52,6 +52,16 @@ pipeline {
                 // Build Docker image
                 container('docker') {
                     sh "docker build -t shemetmaksim/greenhouse_prj:${IMAGE_TAG} ."
+                }
+            }
+        }
+
+        stage('Build-api') {
+            steps {
+                // Build Docker image
+                container('docker') {
+                    sh "cd server"
+                    sh "docker build -t shemetmaksim/greenhouse_api_prj:${IMAGE_TAG} ."
                 }
             }
         }
@@ -79,8 +89,11 @@ pipeline {
                         '''
                     }
                     
-                    // Push image to Docker Hub
+                    // Push ui-image to Docker Hub
                     sh "docker push shemetmaksim/greenhouse_prj:${IMAGE_TAG}"
+                    
+                    // Push api-image to Docker Hub
+                    sh "docker push shemetmaksim/greenhouse_api_prj:${IMAGE_TAG}"
                 }
             }
         }

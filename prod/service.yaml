@@ -12,3 +12,18 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  name: greenhouse-api-svc
+spec:
+  selector:
+    app: greenhouse-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP

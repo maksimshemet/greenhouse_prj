@@ -22,3 +22,35 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  name: greenhouse-api
+  labels:
+    app: greenhouse-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greenhouse-api
+  template:
+    metadata:
+      labels:
+        app: greenhouse-api
+    spec:
+      containers:
+        - name: greenhouse-api
+          image: shemetmaksim/greenhouse_prj_api:jenkins-build_1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: "/usr/src/app/orders"
+              name: greenhouse-storage
+      volumes:
+        - name: greenhouse-storage
+          persistentVolumeClaim:
+            claimName: greenhouse-pvc
