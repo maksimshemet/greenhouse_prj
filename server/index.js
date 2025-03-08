@@ -11,7 +11,7 @@ const DATA_DIR = path.join(__dirname, 'orders');
 
 // CORS Middleware - Add this before other middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:5173'], // Add your frontend URLs here
+  origin: ['http://localhost:3000', 'http://127.0.0.1:5173', 'https://parnyky.smv.pp.ua'], // Add your frontend URLs here
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
