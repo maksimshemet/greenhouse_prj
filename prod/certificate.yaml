@@ -23,7 +23,7 @@ metadata:
   name: greenhouse-api-cert
   namespace: greenhouse
 spec:
-  secretName: greenhouse-cert # Secret where the certificate will be stored
+  secretName: greenhouse-api-cert # Secret where the certificate will be stored
   duration: 2160h                 # How long the certificate is valid
   renewBefore: 1070h              # When to renew the certificate
   dnsNames:

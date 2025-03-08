@@ -33,7 +33,7 @@ spec:
   tls:
     - hosts:
         - api.parnyky.smv.pp.ua
-      secretName: greenhouse-cert
+      secretName: greenhouse-api-cert
   rules:
     - host: api.parnyky.smv.pp.ua
       http:
