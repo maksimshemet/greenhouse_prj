@@ -60,8 +60,7 @@ pipeline {
             steps {
                 // Build Docker image
                 container('docker') {
-                    sh "cd server"
-                    sh "docker build -t shemetmaksim/greenhouse_api_prj:${IMAGE_TAG} ."
+                    sh "cd server && docker build -t shemetmaksim/greenhouse_api_prj:${IMAGE_TAG} ."
                 }
             }
         }
@@ -91,7 +90,7 @@ pipeline {
                     
                     // Push ui-image to Docker Hub
                     sh "docker push shemetmaksim/greenhouse_prj:${IMAGE_TAG}"
-                    
+
                     // Push api-image to Docker Hub
                     sh "docker push shemetmaksim/greenhouse_api_prj:${IMAGE_TAG}"
                 }
