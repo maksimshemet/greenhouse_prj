@@ -146,7 +146,23 @@ const CounterfeitComparison = () => {
               </li>
               <li className="flex items-start">
                 <span className="inline-block w-4 h-4 bg-green-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
-                <span>Дозволяє рослинам дихати, підтримуючи оптимальний рівень вологи та тепла.</span>
+                <span>Дозволяє рослинам дихати, підтримуючи оптимальний баланс тепла та вологи.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-4 h-4 bg-green-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                <span>Парники прискорюють зростання розсади в 2-3 рази.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-4 h-4 bg-green-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                <span>Пропускає до 93% сонячного світла.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-4 h-4 bg-green-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                <span>Теплиця Пролісок відмінно захищає від паразитів, комах та птахів.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-4 h-4 bg-green-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                <span>Агроволокно використовують понад 5 років.</span>
               </li>
             </ul>
           </div>
@@ -172,6 +188,22 @@ const CounterfeitComparison = () => {
               <li className="flex items-start">
                 <span className="inline-block w-4 h-4 bg-red-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
                 <span>Потребує частого провітрювання, може накопичувати шкідливий конденсат.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-4 h-4 bg-red-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                <span>Може погіршити стан рослин.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-4 h-4 bg-red-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                <span>Пропускає до 76% сонячного світла.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-4 h-4 bg-red-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                <span>Може стати причиною зараження рослин фітофторою та іншими хворобами.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-4 h-4 bg-red-500 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                <span>Плівка потребує заміни разів у 2 сезону.</span>
               </li>
             </ul>
           </div>

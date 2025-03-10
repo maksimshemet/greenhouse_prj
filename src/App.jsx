@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import { CartProvider } from './context/CartContext';
 import Success from './pages/Success';
+import Call from './pages/Call';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/success" element={<Success />} />
+            <Route path="/call" element={<Call />} />
           </Routes>
       </Router>
     </CartProvider>

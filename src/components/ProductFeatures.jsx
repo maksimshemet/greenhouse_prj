@@ -1,4 +1,4 @@
-import grnHs600x400 from '../assets/grnhs600x400.jpg';
+import parnik_podsnezhnik from '../assets/parnik_podsnezhnik.jpg';
 import klipsy from '../assets/klipsy.png';
 import dugy from '../assets/dugy.png';
 import kolyshki from '../assets/kilochky.png';
@@ -19,7 +19,7 @@ const ProductFeatures = () => {
         <div className="relative max-w-3xl mx-auto mb-16">
           <div className="border-8 border-gray-100 shadow-lg">
             <img 
-              src={grnHs600x400} 
+              src={parnik_podsnezhnik} 
               alt="Парник Пролісок" 
               className="w-full"
             />

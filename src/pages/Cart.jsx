@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 function Cart() {
   const navigate = useNavigate();
   const { cart, totalPrice, removeFromCart, updateQuantity, clearCart } = useCart();
-  const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');
 
   const handleCreateOrder = async (e) => {
@@ -18,8 +17,8 @@ function Cart() {
     const comment = document.getElementById('comment').value;
     const name = document.getElementById('name').value;
 
-    if (!phone || !delivery) {
-      setError('Будь ласка, заповніть номер телефону та адресу доставки');
+    if (!phone) {
+      setError('Будь ласка, заповніть номер телефону');
       return;
     }
 
@@ -119,18 +118,6 @@ function Cart() {
                 </div>
               ))}
             </div>
-            {/* Error Message */}
-            {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
-                <span className="block sm:inline">{error}</span>
-                <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => setError('')}>
-                <svg className="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <title>Close</title>
-                    <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
-                </svg>
-                </span>
-            </div>
-            )}
             <div className="bg-gray-50 p-6 rounded-lg">
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">Підсумок замовлення</h2>
               <div className="flex justify-between text-lg mb-3">
@@ -159,6 +146,18 @@ function Cart() {
                   <input type="text" id="comment" className="w-full px-3 py-2 border rounded" placeholder="Введіть коментар до замовлення" />
                 </div>
               </form>
+              {/* Error Message */}
+              {error && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+                  <span className="block sm:inline">{error}</span>
+                  <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => setError('')}>
+                  <svg className="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <title>Close</title>
+                      <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
+                  </svg>
+                  </span>
+              </div>
+              )}
               <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Link to="/" className="bg-white border border-green-600 text-green-600 hover:bg-green-50 font-medium py-3 px-6 rounded text-center transition duration-300">
                   Продовжити покупки
