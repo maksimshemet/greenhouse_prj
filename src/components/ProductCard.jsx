@@ -16,7 +16,7 @@ import dripIr1 from '../assets/drip-irrigation-2.jpg';
 import dripIr2 from '../assets/drip-irrigation-3.jpg';
 import dripIr3 from '../assets/drip-irrigation-4.jpg';
 
-const ProductCard = ({ image, size, densities, basePrice, itemsCount, width, height }) => {
+const ProductCard = ({ image, size, densities, prices, itemsCount, width, height }) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
   const [quantities, setQuantities] = useState(densities.map(() => 1));
@@ -40,7 +40,7 @@ const ProductCard = ({ image, size, densities, basePrice, itemsCount, width, hei
     const product = {
       id: `parnik-${size}m-${density}g`,
       name: `Парник (${size} м) - ${density}г/м²`,
-      price: basePrice + (index * 50),
+      price: prices[index],
       image: image,
       size: size,
       density: density,
@@ -143,7 +143,7 @@ const ProductCard = ({ image, size, densities, basePrice, itemsCount, width, hei
             {/* Ціна */}
             <div className="text-center mb-4">
               <span className="text-2xl font-bold text-red-600">
-                {basePrice + (index * 50)} грн
+                {prices[index]} грн
               </span>
             </div>
             
@@ -171,7 +171,7 @@ const ProductCatalog = () => {
       image: m3, 
       size: 3,
       densities: [42, 50, 60],
-      basePrice: 349,
+      prices: [419, 499, 589],
       itemsCount: 9,
       width: 1.2,
       height: 0.8
@@ -180,7 +180,7 @@ const ProductCatalog = () => {
       image: m4,
       size: 4,
       densities: [42, 50, 60],
-      basePrice: 399,
+      prices: [539, 599, 689],
       itemsCount: 11,
       width: 1.2,
       height: 0.8
@@ -189,7 +189,7 @@ const ProductCatalog = () => {
       image: m5,
       size: 5,
       densities: [42, 50, 60],
-      basePrice: 399,
+      prices: [599, 689, 789],
       itemsCount: 11,
       width: 1.2,
       height: 0.8
@@ -198,7 +198,7 @@ const ProductCatalog = () => {
       image: m6,
       size: 6,
       densities: [42, 50, 60],
-      basePrice: 399,
+      prices: [659, 789, 889],
       itemsCount: 11,
       width: 1.2,
       height: 0.8
@@ -207,7 +207,7 @@ const ProductCatalog = () => {
       image: m8,
       size: 8,
       densities: [42, 50, 60],
-      basePrice: 399,
+      prices: [819, 929, 1019],
       itemsCount: 11,
       width: 1.2,
       height: 0.8
@@ -216,7 +216,7 @@ const ProductCatalog = () => {
       image: m10,
       size: 10,
       densities: [42, 50, 60],
-      basePrice: 399,
+      prices: [989, 1119, 1189],
       itemsCount: 11,
       width: 1.2,
       height: 0.8
@@ -225,7 +225,7 @@ const ProductCatalog = () => {
       image: m12,
       size: 12,
       densities: [42, 50, 60],
-      basePrice: 399,
+      prices: [1159, 1319, 1429],
       itemsCount: 11,
       width: 1.2,
       height: 0.8
@@ -234,7 +234,7 @@ const ProductCatalog = () => {
       image: m15,
       size: 15,
       densities: [42, 50, 60],
-      basePrice: 399,
+      prices: [1399, 1599, 1719],
       itemsCount: 11,
       width: 1.2,
       height: 0.8
