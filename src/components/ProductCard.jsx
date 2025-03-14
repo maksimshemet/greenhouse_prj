@@ -85,7 +85,7 @@ const ProductCard = ({ image, size, densities, prices, itemsCount, width, height
           </div>
           <div className="flex justify-between">
             <span>Дуги ПНД (діаметр 20 мм)</span>
-            <span>{size === 3 ? '4' : '5'} шт</span>
+            <span>{size === 2 ? '3' : size === 3 ? '4' : '5'} шт</span>
           </div>
           <div className="flex justify-between">
             <span>Кілочки (довжина 20 см)</span>
@@ -171,9 +171,9 @@ const ProductCatalog = () => {
     {
       image: m2, 
       size: 2,
-      densities: [20, 20, 20],
+      densities: [42, 50, 60],
       prices: [339, 369, 409],
-      itemsCount: 9,
+      itemsCount: 7,
       width: 1.2,
       height: 0.8
     },
