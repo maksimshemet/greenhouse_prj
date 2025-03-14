@@ -25,7 +25,7 @@ const BenefitsSection = () => {
             <span className="text-xl font-medium text-red-600 mb-4">років</span>
             <Award className="text-gray-700 mb-3" size={32} />
             <p className="text-sm text-gray-800">
-              Саме <strong>на такий термін даємо гарантію</strong> 
+              Саме <strong>на такий термін даємо гарантію </strong> 
               на товари нашого виробництва. Наші 
               парники Ви зможете використовувати 
               не один сезон, вони будуть надійно 

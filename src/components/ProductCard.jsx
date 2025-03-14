@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import AddToCartButton from './AddToCartButton';
+import m2 from '../assets/2.png';
 import m3 from '../assets/3.jpg';
 import m4 from '../assets/4.jpg';
 import m5 from '../assets/5.jpg';
@@ -167,6 +168,15 @@ const ProductCard = ({ image, size, densities, prices, itemsCount, width, height
 
 const ProductCatalog = () => {
   const parniky = [
+    {
+      image: m2, 
+      size: 2,
+      densities: [20, 20, 20],
+      prices: [339, 369, 409],
+      itemsCount: 9,
+      width: 1.2,
+      height: 0.8
+    },
     {
       image: m3, 
       size: 3,

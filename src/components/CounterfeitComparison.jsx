@@ -1,11 +1,13 @@
 import React from 'react';
 import { CheckCircle, XCircle } from 'lucide-react';
 import klipsy from '../assets/klipsy.png';
-import kolyshki from '../assets/kolyshki.png';
 import parnik_podsnezhnik from '../assets/parnik_podsnezhnik.jpg';
 import parnik_s_plenkoy from '../assets/parnik_s_plenkoy.jpg';
 import agrovolokno from '../assets/agrovolokno.png';
 import kilochky from '../assets/kilochky.png';
+import bkilochky from '../assets/bkilochky.png';
+import bklipsy from '../assets/bklipsy.png';
+import bkolyshky from '../assets/bkolyshky.png';
 
 const CounterfeitComparison = () => {
   return (
@@ -60,7 +62,7 @@ const CounterfeitComparison = () => {
                 <CheckCircle size={40} className="absolute -top-2 -right-2 text-green-500" />
               </div>
               <div className="relative ml-12">
-                <img src={klipsy} alt="Counterfeit clips" className="rounded-full bg-gray-50" />
+                <img src={bklipsy} alt="Counterfeit clips" className="rounded-full bg-gray-50" />
                 <XCircle size={40} className="absolute -top-2 -right-2 text-red-500" />
               </div>
             </div>
@@ -88,7 +90,7 @@ const CounterfeitComparison = () => {
                 <CheckCircle size={40} className="absolute -top-2 -right-2 text-green-500" />
               </div>
               <div className="relative ml-12">
-                <img src={kilochky} alt="Counterfeit stakes" className="rounded-full bg-gray-50" />
+                <img src={bkilochky} alt="Counterfeit stakes" className="rounded-full bg-gray-50" />
                 <XCircle size={40} className="absolute -top-2 -right-2 text-red-500" />
               </div>
             </div>
@@ -113,7 +115,7 @@ const CounterfeitComparison = () => {
             </div>
             <div className="w-full md:w-1/4 flex justify-center">
               <div className="relative">
-                <img src={kilochky} alt="Water pipe" className="bg-gray-200 rounded" />
+                <img src={bkolyshky} alt="Water pipe" className="bg-gray-200 rounded" />
                 <XCircle size={40} className="absolute -top-2 -right-2 text-red-500" />
               </div>
             </div>
