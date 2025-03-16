@@ -85,7 +85,7 @@ const ProductCard = ({ image, size, densities, prices, itemsCount, width, height
           </div>
           <div className="flex justify-between">
             <span>Дуги ПНД (діаметр 20 мм)</span>
-            <span>{size === 2 ? '3' : size === 3 ? '4' : '5'} шт</span>
+            <span>{size === 2 ? '3' : size === 3 ? '4': size === 4 ? '5': size === 5 ? '6' : size === 6 ? '7': size === 8 ? '9' : size === 10 ? '11': size === 12 ? '13': size === 15 ? '16': ''} шт</span>
           </div>
           <div className="flex justify-between">
             <span>Кілочки (довжина 20 см)</span>
@@ -207,7 +207,7 @@ const ProductCatalog = () => {
       size: 5,
       densities: [42, 50, 60],
       prices: [599, 689, 789],
-      itemsCount: 11,
+      itemsCount: 13,
       width: 1.2,
       height: 0.8
     },
@@ -216,7 +216,7 @@ const ProductCatalog = () => {
       size: 6,
       densities: [42, 50, 60],
       prices: [659, 789, 889],
-      itemsCount: 11,
+      itemsCount: 15,
       width: 1.2,
       height: 0.8
     },
@@ -225,7 +225,7 @@ const ProductCatalog = () => {
       size: 8,
       densities: [42, 50, 60],
       prices: [819, 929, 1019],
-      itemsCount: 11,
+      itemsCount: 19,
       width: 1.2,
       height: 0.8
     },
@@ -234,7 +234,7 @@ const ProductCatalog = () => {
       size: 10,
       densities: [42, 50, 60],
       prices: [989, 1119, 1189],
-      itemsCount: 11,
+      itemsCount: 23,
       width: 1.2,
       height: 0.8
     },
@@ -243,7 +243,7 @@ const ProductCatalog = () => {
       size: 12,
       densities: [42, 50, 60],
       prices: [1159, 1319, 1429],
-      itemsCount: 11,
+      itemsCount: 27,
       width: 1.2,
       height: 0.8
     },
@@ -252,7 +252,7 @@ const ProductCatalog = () => {
       size: 15,
       densities: [42, 50, 60],
       prices: [1399, 1599, 1719],
-      itemsCount: 11,
+      itemsCount: 33,
       width: 1.2,
       height: 0.8
     }
