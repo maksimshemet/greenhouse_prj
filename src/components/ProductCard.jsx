@@ -148,6 +148,13 @@ const ProductCard = ({ image, size, densities, prices, itemsCount, width, height
               </span>
             </div>
             
+            {/* При замовленні від 2шт */}
+            <div className="text-center mb-4">
+              <span className="text-sm font-semibold text-green-600">
+                При замовленні від 2шт: {size === 2 ? (density === 42 ? '226грн/шт' : density === 50 ? '246грн/шт' : '273грн/шт') : size === 3 ? (density === 42 ? '279грн/шт' : density === 50 ? '333грн/шт' : '392грн/шт') : size === 4 ? (density === 42 ? '359грн/шт' : density === 50 ? '399грн/шт' : '459грн/шт') : size === 5 ? (density === 42 ? '399грн/шт' : density === 50 ? '459грн/шт' : '536грн/шт') : size === 6 ? (density === 42 ? '439грн/шт' : density === 50 ? '526грн/шт' : '592грн/шт') : size === 8 ? (density === 42 ? '546грн/шт' : density === 50 ? '619грн/шт' : '679грн/шт') : size === 10 ? (density === 42 ? '659грн/шт' : density === 50 ? '746грн/шт' : '792грн/шт') : size === 12 ? (density === 42 ? '772грн/шт' : density === 50 ? '879грн/шт' : '952грн/шт') : size === 15 ? (density === 42 ? '932грн/шт' : density === 50 ? '1066грн/шт' : '1146грн/шт'): ''}
+              </span>
+            </div>
+            
             {/* Кнопка купити */}
             <button 
               className={`w-full py-2 font-medium transition duration-300 ${
